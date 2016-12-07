@@ -82,7 +82,7 @@
     };
 
     let player = new Player(canvas.width / 2);
-
+    
     // !!!!! You can treat this function like Khan Academy’s `draw`---just precede all
     //       drawing instructions with `game.`
     let draw = (millisecondsElapsed) => {
@@ -119,10 +119,22 @@
                 Math.floor(Math.random() * (canvas.width - fallerWidth)), 0,
                 fallerWidth, Math.floor(Math.random() * HEIGHT_RANGE) + MIN_HEIGHT
             ));
+            
+     let score = document.getElementById("score");
+    
+      col();
         }, MILLISECONDS_BETWEEN_FALLERS);
     };
 
     let stopFallerGenerator = () => clearInterval(fallerGenerator);
+    
+    let col = function () {
+        let detectCol = false;
+        if ((Math.floor(player.x) <= fallers[0 || 1 || 2 || 3 || 4].x + 45 && Math.floor(player.x) >= fallers[0 || 1 || 2 || 3 || 4].x - 45) && (Math.floor(player.y) <= fallers[0 || 1 || 2 || 3 || 4].y + 45 && Math.floor(player.y) >= fallers[0 || 1 || 2 || 3 || 4].y - 45)) {
+	          detectCol = true
+            };
+        score.innerHTML = detectCol + " " + Math.floor(player.x) + " " + fallers[0 || 1 || 2 || 3 || 4].x + fallers;
+    };
 
     // !!!!! This section is also modifiable to a degree: it is responsible for moving the "player" around based on
     //       mouse movement.

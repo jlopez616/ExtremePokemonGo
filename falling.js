@@ -15,7 +15,7 @@
        http://es6-features.org
 
    There are many other resources available as well.
-*/
+
 (() => {
     // In general, don't touch anything except for sections explicitly marked as such.
     // Look for the exclamations points (!!!!!) for such markers.
@@ -180,3 +180,4 @@
         running = false;
     });
 })();
+*/

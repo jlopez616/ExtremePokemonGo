@@ -9,6 +9,7 @@
     let fallers = [];
     let pokeBalls = 10;
     let points = 270;
+    let score = document.getElementById("score");
     let bulbasaurPic = document.getElementById("bulbasaur");
     let charizardPic = document.getElementById("charizard");
     let squirtlePic = document.getElementById("squirtle");
@@ -26,15 +27,15 @@
     
     let startButton = document.getElementById("start-button");
     let stopButton = document.getElementById("stop-button");
-    let pokeMart = document.getElementById("pokeMart")
+    let pokeMart = document.getElementById("pokeMart");
    
     let buyOneBall = document.getElementById("buyOneBall");
     let buyFiveBalls = document.getElementById("buyFiveBalls");
     let oneBallCost = document.getElementById("oneBallCost");
-    let fiveBallsCost = document.getElementById("fiveBallsCost")
+    let fiveBallsCost = document.getElementById("fiveBallsCost");
     
     let test = document.getElementById("test");
-    let test2 = document.getElementById("test2");
+    let rand;
     
     let pokedex = [
         {
@@ -125,7 +126,7 @@
     ];
     // Check out that cool ES6 feature: default parameter values!
     const DEFAULT_DESCENT = 0.0001; // This is per millisecond.
-    let Faller = function (x, y, width, height, dx = 0, dy = 0, ax = 0, ay = DEFAULT_DESCENT, species) {
+    let Faller = function (x, y, width, height, dx = 0, dy = 0, ax = 0, ay = DEFAULT_DESCENT) {
         this.x = x;
         this.y = y;
         this.width = width;
@@ -143,7 +144,7 @@
     };
     
     Faller.prototype.draw = function () {
-         game.drawImage(this.species.image, this.x, this.y, 75, 75);
+        game.drawImage(this.species.image, this.x, this.y, 75, 75);
     };
     
     Faller.prototype.move = function (millisecondsElapsed) {
@@ -181,12 +182,11 @@
     let a;
     let b;
     
-     let fallerReturn = function(sit) {
-            fallers = fallers.filter((faller) => {
-            return faller.y < sit;
-        });
-            
-        }
+    let fallerReturn = function(sit) {
+        fallers = fallers.filter((faller) => {
+                return faller.y < sit;
+            });
+        };
 
 
 
@@ -211,7 +211,7 @@
             fallerReturn(canvas.height);
         }
         
-        if (pokeBalls < 0 ||  points < 0) {
+        if (pokeBalls < 0 || points < 0) {
             lost.className = "";
             canvas.className = "hidden";
             oneBallCost.className = "hidden";
@@ -222,15 +222,13 @@
             pokeMart.className = "hidden";
             stopFallerGenerator();
             running = false;
-         }
+        }
     };
 
     // !!!!! This section is modifiable to a degree. It is responsible for generating falling objects at random.
     //       You don't want to completely eliminate this code, but you may want to revise it to modify the rate/range
     //       of objects that get generated.
 
-    const MIN_WIDTH = 10;
-    const WIDTH_RANGE = 20;
     const MIN_HEIGHT = 10;
     const HEIGHT_RANGE = 20;
     let MILLISECONDS_BETWEEN_FALLERS = 750;
@@ -248,7 +246,7 @@
             isCombo = 1;
         }
         
-    //let isWon = false;
+    // let isWon = false;
     
     };
     let startFallerGenerator = () => {
@@ -263,28 +261,28 @@
                 10, Math.floor(Math.random() * HEIGHT_RANGE) + MIN_HEIGHT
             ));
             
-           if (((Math.floor(fallers[0].x) <  Math.floor(player.x + 30)) && (Math.floor(fallers[0].x) >  Math.floor(player.x - 30))) && ((Math.floor(fallers[0].y) >= 439)) && ((Math.floor(fallers[0].y) <= canvas.height))){
-                 a = fallers[0].species.type;
-                 pokeBox.unshift(a);
-                 comboTest();
-                 points = points + (fallers[0].species.worth * isCombo);
-                 pokeBalls--;
-                 score.innerHTML = "PokeDollars: " + points + " PokeBalls:" + pokeBalls;
-                 isCollide = true;
+           if (((Math.floor(fallers[0].x) < Math.floor(player.x + 30)) && (Math.floor(fallers[0].x) > Math.floor(player.x - 30))) && ((Math.floor(fallers[0].y) >= 439)) && ((Math.floor(fallers[0].y) <= canvas.height))){
+            a = fallers[0].species.type;
+            pokeBox.unshift(a);
+            comboTest();
+            points = points + (fallers[0].species.worth * isCombo);
+            pokeBalls--;
+            score.innerHTML = "PokeDollars: " + points + " PokeBalls:" + pokeBalls;
+            isCollide = true;
              }
 
-             if (((Math.floor(fallers[1].x) <  Math.floor(player.x + 30)) && (Math.floor(fallers[1].x) >  Math.floor(player.x - 30))) && ((Math.floor(fallers[1].y) >= 439)) && ((Math.floor(fallers[1].y) <= canvas.height))){
-                 b = fallers[1].species.type;
-                 pokeBox.unshift(b);
-                 comboTest();
-                 points = points + (fallers[1].species.worth * isCombo);
-                 pokeBalls--;
-                 score.innerHTML = "PokeDollars: " + points + " PokeBalls:" + pokeBalls;
-                 isCollide = true;
+             if (((Math.floor(fallers[1].x) < Math.floor(player.x + 30)) && (Math.floor(fallers[1].x) > Math.floor(player.x - 30))) && ((Math.floor(fallers[1].y) >= 439)) && ((Math.floor(fallers[1].y) <= canvas.height))){
+            b = fallers[1].species.type;
+            pokeBox.unshift(b);
+            comboTest();
+            points = points + (fallers[1].species.worth * isCombo);
+            pokeBalls--;
+            score.innerHTML = "PokeDollars: " + points + " PokeBalls:" + pokeBalls;
+            isCollide = true;
                } 
                 
              else {
-                 isCollide = false;
+                isCollide = false;
                  comboTest();
                  score.innerHTML = "PokeDollars: " + points + " PokeBalls:" + pokeBalls;
                  test.innerHTML = kind;
@@ -333,29 +331,21 @@
    startButton.addEventListener("click", () => {
         running = true;
         lastTimestamp = 0;
-            startFallerGenerator();
-        
-    
+        startFallerGenerator();
         window.requestAnimationFrame(nextFrame);
-    });
+      });
     
     buyOneBall.addEventListener("click", function() {
         points = points - 30;
-        pokeBalls ++;
+        pokeBalls++;
         score.innerHTML = "PokeDollars: " + points + " PokeBalls:" + pokeBalls;
-    });
+      });
     
       buyFiveBalls.addEventListener("click", function() {
         points = points - 145;
         pokeBalls = pokeBalls + 5;
         score.innerHTML = "PokeDollars: " + points + " PokeBalls:" + pokeBalls;
-    });
-    
-      buyTenBalls.addEventListener("click", function() {
-        points = points - 270;
-        pokeBalls = pokeBalls + 10;
-        score.innerHTML = "PokeDollars: " + points + " PokeBalls:" + pokeBalls;
-    });
+      });
 
     stopButton.addEventListener("click", () => {
         stopFallerGenerator();

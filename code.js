@@ -276,10 +276,10 @@
                 10, Math.floor(Math.random() * HEIGHT_RANGE) + MIN_HEIGHT
             ));
             
-            if ((Math.floor(fallers[0].x) < Math.floor(player.x + 30)) &&
-               (Math.floor(fallers[0].x) > Math.floor(player.x - 30)) && 
-               (Math.floor(fallers[0].y) >= 439) &&  
-               (Math.floor(fallers[0].y) <= canvas.height)){
+            if (Math.floor(fallers[0].x) < Math.floor(player.x + 30) &&
+               Math.floor(fallers[0].x) > Math.floor(player.x - 30) && 
+               Math.floor(fallers[0].y) >= 439 &&  
+               Math.floor(fallers[0].y) <= canvas.height){
                 a = fallers[0].species.type;
                 pokeBox.unshift(a);
                 comboTest();
@@ -289,10 +289,10 @@
                 isCollide = true;
             }
 
-            if ((Math.floor(fallers[1].x) < Math.floor(player.x + 30)) && 
-                 (Math.floor(fallers[1].x) > Math.floor(player.x - 30)) && 
-                 (Math.floor(fallers[1].y) >= 439) && 
-                 (Math.floor(fallers[1].y) <= canvas.height)){
+            if (Math.floor(fallers[1].x) < Math.floor(player.x + 30) && 
+                 Math.floor(fallers[1].x) > Math.floor(player.x - 30) && 
+                 Math.floor(fallers[1].y) >= 439 && 
+                 Math.floor(fallers[1].y) <= canvas.height){
                 b = fallers[1].species.type;
                 pokeBox.unshift(b);
                 comboTest();

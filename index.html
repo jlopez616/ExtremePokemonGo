@@ -9,14 +9,14 @@
 
     <body>
          <h1> <img src="http://www.serebii.net/itemdex/sprites/pokeball.png">Extreme Pokemon Go<img id="pokeball" src="http://www.serebii.net/itemdex/sprites/pokeball.png"></h1>
+        <p id="won" class="hidden">You won!</p>
         <p id="lost" class="hidden">You've been fired!</p>
-        <p id="exposition">My name is Professor Dondi, and I am a Pokemon Researcher! Today you are going to be my research assistant, and help me capture all 14 kinds of Pokemon here on the bluff to fill the PokeDex.
+        <p id="exposition">My name is Professor Dondi, and I am a Pokemon Researcher! Today you are going to be my research assistant, and help me capture Pokemon here on the bluff!
             <br>
             <br>The Pokemon on the bluff appear only for a second, so you'll have to quickly catch them using PokeBalls as they come towards you. When you catch a Pokemon, you use one PokeBall up. Don't run out, or else you will be fired! But everytime you
-            catch a Pokemon, even if you've caught one of that type before, you will be given PokeDollars by me so you can visit the PokeMart and buy more PokeBalls. Don't run out of PokeDollars either, or else I will fire you!
+            catch a Pokemon, you will be given PokeDollars by me so you can visit the PokeMart and buy more PokeBalls. Some Pokemon are worth more than others. Your task will be finished when you have 500 PokeDollars. Don't run out of PokeDollars either, or else I will fire you!
             <br>
-            <br>I will give you 270 PokeDollars and 10 PokeBalls to start off. To make this interesting, try to catch Pokemon with the same elemental type in a row, and I'll give you more PokeDollars.
-            <br>
+            <br>I will give you 290 PokeDollars and 10 PokeBalls to start off. To make this interesting, try to catch Pokemon with the same elemental type in a row, and I'll give you more PokeDollars. If you make a SUPER type combo that matches the type of the day, I will give you even more.        <br>
             <br>
         </p>
         <canvas id="game" width="1024" height="536" class="hidden">Sorry, but you need a web browser that supports the
@@ -28,6 +28,7 @@
             <button id="stop-button">Pause</button>
             <p id="score">
         </p>
+        <p id="superCombo"></p>
 
         <p id="test"></p>
         <div id="pokeMart">
@@ -53,69 +54,69 @@
                 <table align="center">
                     <tr>
                         <th>Pokemon Species</th>
-                        <th>Caught?</th>
+                        <th>Picture</th>
                         <th>Pokemon Type</th>
                     </tr>
                     <tr>
                         <th>Bulbasaur</th>
                         <th>
-                            <img id="bulbasaur" src="http://www.serebii.net/pokedex-xy/icon/001.png" class="hidden">
+                            <img id="bulbasaur" src="http://www.serebii.net/pokedex-xy/icon/001.png">
                         </th>
                         <th>Grass</th>
                     </tr>
                     <tr>
                         <th>Charizard</th>
                         <th>
-                            <img id="charizard" src="http://www.serebii.net/pokedex-xy/icon/006.png" class="hidden">
+                            <img id="charizard" src="http://www.serebii.net/pokedex-xy/icon/006.png">
                         </th>
                         <th>Fire</th>
                     </tr>
                     <tr>
                         <th>Squirtle</th>
                         <th>
-                            <img id="squirtle" src="http://www.serebii.net/pokedex-xy/icon/007.png" class="hidden">
+                            <img id="squirtle" src="http://www.serebii.net/pokedex-xy/icon/007.png">
                         </th>
                         <th>Water</th>
                     </tr>
                     <tr>
                         <th>Pikachu</th>
                         <th>
-                            <img id="pikachu" src="http://www.serebii.net/pokedex-xy/icon/025.png" class="hidden">
+                            <img id="pikachu" src="http://www.serebii.net/pokedex-xy/icon/025.png">
                         </th>
                         <th>Electric</th>
                     </tr>
                     <tr>
                         <th>Jigglypuff</th>
                         <th>
-                            <img id="jigglypuff" src="http://www.serebii.net/pokedex-xy/icon/039.png" class="hidden">
+                            <img id="jigglypuff" src="http://www.serebii.net/pokedex-xy/icon/039.png">
                         </th>
                         <th>Fairy</th>
                     </tr>
                     <tr>
                         <th>Primeape</th>
                         <th>
-                            <img id="primeape" src="http://www.serebii.net/pokedex-xy/icon/057.png" class="hidden">
+                            <img id="primeape" src="http://www.serebii.net/pokedex-xy/icon/057.png">
                         </th>
                         <th>Fighting</th>
                     </tr>
                     <tr>
                         <th>Mewtwo</th>
                         <th>
-                            <img id="mewtwo" src="http://www.serebii.net/pokedex-xy/icon/150.png" class="hidden">
+                            <img id="mewtwo" src="http://www.serebii.net/pokedex-xy/icon/150.png">
                         </th>
                         <th>Psychic</th>
                     </tr>
                     <tr>
                         <th>Pichu</th>
                         <th>
-                            <img id="pichu" src="http://www.serebii.net/pokedex-xy/icon/172.png" class="hidden">
+                            <img id="pichu" src="http://www.serebii.net/pokedex-xy/icon/172.png">
                         </th>
                         <th>Electric</th>
                     </tr>
                     <tr>
                         <th>Togepi</th>
                         <th>
-                            <img id="togepi" src="http://www.serebii.net/pokedex-xy/icon/175.png" class="hidden">
+                            <img id="togepi" src="http://www.serebii.net/pokedex-xy/icon/175.png">
                         </th>
                         <th>Fairy</th>
 
@@ -123,35 +124,35 @@
                     <tr>
                         <th>Bellossom</th>
                         <th>
-                            <img id="bellossom" src="http://www.serebii.net/pokedex-xy/icon/182.png" class="hidden">
+                            <img id="bellossom" src="http://www.serebii.net/pokedex-xy/icon/182.png">
                         </th>
                         <th>Grass</th>
                     </tr>
                     <tr>
                         <th>Blaziken</th>
                         <th>
-                            <img id="blaziken" src="http://www.serebii.net/pokedex-xy/icon/257.png" class="hidden">
+                            <img id="blaziken" src="http://www.serebii.net/pokedex-xy/icon/257.png">
                         </th>
                         <th>Fire</th>
                     </tr>
                     <tr>
                         <th>Garedvoir</th>
                         <th>
-                            <img id="gardevoir" src="http://www.serebii.net/pokedex-xy/icon/282.png" class="hidden">
+                            <img id="gardevoir" src="http://www.serebii.net/pokedex-xy/icon/282.png">
                         </th>
                         <th>Psychic</th>
                     </tr>
                     <tr>
                         <th>Lucario</th>
                         <th>
-                            <img id="lucario" src="http://www.serebii.net/pokedex-xy/icon/448.png" class="hidden">
+                            <img id="lucario" src="http://www.serebii.net/pokedex-xy/icon/448.png">
                         </th>
                         <th>Fighting</th>
                     </tr>
                     <tr>
                         <th>Greninja</th>
                         <th>
-                            <img id="greninja" src="http://www.serebii.net/pokedex-xy/icon/658.png" class="hidden">
+                            <img id="greninja" src="http://www.serebii.net/pokedex-xy/icon/658.png">
                         </th>
                         <th>Water</th>
                     </tr>

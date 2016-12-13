@@ -185,9 +185,9 @@
     
     let fallerReturn = function(sit) {
         fallers = fallers.filter((faller) => {
-                return faller.y < sit;
-            });
-        };
+            return faller.y < sit;
+        });
+    };
 
 
 
@@ -225,7 +225,7 @@
             running = false;
         }
         
-        if (points >= 500) {
+        if (points >= 1000) {
             won.className = "";
             canvas.className = "hidden";
             oneBallCost.className = "hidden";
@@ -276,37 +276,35 @@
                 10, Math.floor(Math.random() * HEIGHT_RANGE) + MIN_HEIGHT
             ));
             
-           if (((Math.floor(fallers[0].x) < Math.floor(player.x + 30)) 
-               && (Math.floor(fallers[0].x) > Math.floor(player.x - 30)))
-               && ((Math.floor(fallers[0].y) >= 439)) 
-               && ((Math.floor(fallers[0].y) <= canvas.height))){
-                a = fallers[0].species.type;
-                pokeBox.unshift(a);
-                comboTest();
-                points = points + (fallers[0].species.worth * isCombo);
-                pokeBalls--;
-                score.innerHTML = "PokeDollars: " + points + " PokeBalls:" + pokeBalls;
-                isCollide = true;
-             }
+          if (((Math.floor(fallers[0].x) < Math.floor(player.x + 30)) &&
+               (Math.floor(fallers[0].x) > Math.floor(player.x - 30))) && 
+               ((Math.floor(fallers[0].y) >= 439)) &&  
+               ((Math.floor(fallers[0].y) <= canvas.height))){
+               a = fallers[0].species.type;
+               pokeBox.unshift(a);
+               comboTest();
+               points = points + (fallers[0].species.worth * isCombo);
+               pokeBalls--;
+               score.innerHTML = "PokeDollars: " + points + " PokeBalls:" + pokeBalls;
+               isCollide = true;
+           }
 
-             if (((Math.floor(fallers[1].x) < Math.floor(player.x + 30)) 
-                 && (Math.floor(fallers[1].x) > Math.floor(player.x - 30))) 
-                 && ((Math.floor(fallers[1].y) >= 439)) 
-                 && ((Math.floor(fallers[1].y) <= canvas.height))){
-                b = fallers[1].species.type;
-                pokeBox.unshift(b);
-                comboTest();
-                points = points + (fallers[1].species.worth * isCombo);
-                pokeBalls--;
-                score.innerHTML = "PokeDollars: " + points + " PokeBalls:" + pokeBalls;
-                isCollide = true;
-               } 
-                
-             else {
-                isCollide = false;
+             if (((Math.floor(fallers[1].x) < Math.floor(player.x + 30)) && 
+                 (Math.floor(fallers[1].x) > Math.floor(player.x - 30))) && 
+                 ((Math.floor(fallers[1].y) >= 439)) && 
+                 ((Math.floor(fallers[1].y) <= canvas.height))){
+                 b = fallers[1].species.type;
+                 pokeBox.unshift(b);
                  comboTest();
+                 points = points + (fallers[1].species.worth * isCombo);
+                 pokeBalls--;
                  score.innerHTML = "PokeDollars: " + points + " PokeBalls:" + pokeBalls;
-                 test.innerHTML = kind;
+                 isCollide = true;
+              
+            } else {
+                isCollide = false;
+                comboTest();
+                score.innerHTML = "PokeDollars: " + points + " PokeBalls:" + pokeBalls;
             
              } 
 
@@ -349,7 +347,7 @@
     
   //  let test = document.getElementById("test");
 
-   startButton.addEventListener("click", () => {
+    startButton.addEventListener("click", () => {
         running = true;
         lastTimestamp = 0;
         startFallerGenerator();

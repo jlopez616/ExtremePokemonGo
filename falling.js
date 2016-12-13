@@ -130,8 +130,11 @@
     
     let col = function () {
         let detectCol = false;
-        if ((Math.floor(player.x) <= fallers[0 || 1 || 2 || 3 || 4].x + 45 && Math.floor(player.x) >= fallers[0 || 1 || 2 || 3 || 4].x - 45) && (Math.floor(player.y) <= fallers[0 || 1 || 2 || 3 || 4].y + 45 && Math.floor(player.y) >= fallers[0 || 1 || 2 || 3 || 4].y - 45)) {
-	          detectCol = true
+        if ((Math.floor(player.x) <= fallers[0 || 1 || 2 || 3 || 4].x 
+	+ 45 && Math.floor(player.x) >= fallers[0 || 1 || 2 || 3 || 4].x - 45) && (Math.floor(player.y)
+	<= fallers[0 || 1 || 2 || 3 || 4].y + 45 && Math.floor(player.y) >= fallers[0 || 1 || 2 || 3 || 4]
+	.y - 45)) {
+	         detectCol = true
             };
         score.innerHTML = detectCol + " " + Math.floor(player.x) + " " + fallers[0 || 1 || 2 || 3 || 4].x + fallers;
     };

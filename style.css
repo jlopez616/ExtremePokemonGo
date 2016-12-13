@@ -1,0 +1,23 @@
+canvas {
+    border: solid 1px gray;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 512px;
+}
+body {
+    text-align: center;
+    font-family: Verdana;
+    background-color:salmon;
+}
+#pokeMart {
+    background-color:blue;
+    font-family: helvetica;
+    color: white;
+}
+table, th, td, tr {
+    border: 1px solid black;
+}
+.hidden {
+    display:none;
+}

@@ -268,12 +268,12 @@
     } else if (dailyComboType === 5){
         dailyCombo = "fairy";
     } else if (dailyComboType === 6){
-        dailyCombo = "fighting"
+        dailyCombo = "fighting";
     } else {
         dailyCombo = "psychic";
     }
     
-    superCombo.innerHTML = "Today's super combo is: " + dailyCombo + "!"
+    superCombo.innerHTML = "Today's super combo is: " + dailyCombo + "!";
             
     let comboTest = function() {
         if (pokeBox[0] === pokeBox [1]) {

@@ -34,6 +34,7 @@
     let oneBallCost = document.getElementById("oneBallCost");
     let fiveBallsCost = document.getElementById("fiveBallsCost");
     
+    let superCombo = document.getElementById("superCombo");
     let test = document.getElementById("test");
     let won = document.getElementById("won");
     let rand;
@@ -221,6 +222,7 @@
             stopButton.className = "hidden";
             score.className = "hidden";
             pokeMart.className = "hidden";
+            superCombo.className = "hidden";
             stopFallerGenerator();
             running = false;
         }
@@ -234,6 +236,7 @@
             stopButton.className = "hidden";
             score.className = "hidden";
             pokeMart.className = "hidden";
+            superCombo.className = "hidden";
             stopFallerGenerator();
             running = false;
             
@@ -251,11 +254,34 @@
     let fallerGenerator;
     let exposition = document.getElementById("exposition");
     let lost = document.getElementById("lost");
+    
+    let dailyCombo;
+    let dailyComboType = Math.floor(Math.random() * 7);
+    if (dailyComboType === 1){
+        dailyCombo = "grass";
+    } else if (dailyComboType === 2){
+        dailyCombo = "fire";
+    } else if (dailyComboType === 3){
+        dailyCombo = "water";
+    } else if (dailyComboType === 4){
+        dailyCombo = "electric";
+    } else if (dailyComboType === 5){
+        dailyCombo = "fairy";
+    } else if (dailyComboType === 6){
+        dailyCombo = "fighting"
+    } else {
+        dailyCombo = "psychic";
+    }
+    
+    superCombo.innerHTML = "Today's super combo is: " + dailyCombo + "!"
             
     let comboTest = function() {
         if (pokeBox[0] === pokeBox [1]) {
             test.innerHTML = "Same Type Combo!";
             isCombo = 2;
+            if (pokeBox [1] === dailyCombo) {
+                isCombo = 4;
+            }
         } else {
             test.innerHTML = "";
             isCombo = 1;
@@ -264,6 +290,9 @@
     // let isWon = false;
     
     };
+    
+  
+    
     let startFallerGenerator = () => {
         exposition.className = "hidden";
         canvas.className = "";
